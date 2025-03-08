@@ -34,13 +34,27 @@ EOT
 
 # set up similar template -> module.exports at bottom
 cat <<EOT >> ./scripts/specific.js
+const fs = require('node:fs/promises');
 
+async function readwrite (filePath, outputFileName) {
+ 
+    try {
+        const data = await fs.readFile(filePath, { encoding: 'utf8' });
+        await fs.writeFile(outputFileName,data);
+    } 
+    catch (error){
+        console.error(error)
+    }
+}
+
+module.exports = { readwrite }
 EOT
 
 # routing template, modules
 cat <<EOT >> main.js
 const process = require('process');
 const utility = require('./scripts/helper')
+const specific = require('./scripts/specific')
 
 const processRoute = process.argv[2]
 const inputName = process.argv[3]
