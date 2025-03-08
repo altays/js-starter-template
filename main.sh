@@ -85,13 +85,10 @@ else
 fi
 EOT
 
-#initialize node stuff
 npm init -y
-
 rm package.json
 touch package.json
 
-# routing
 cat <<EOT >> package.json
 {
   "name": "$name",
