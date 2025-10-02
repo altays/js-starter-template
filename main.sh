@@ -7,7 +7,10 @@ read description
 echo "Enter the year"
 read year
 
-cd ..
+## set route here
+cd 
+
+
 mkdir $name
 
 cd $name
@@ -97,29 +100,35 @@ elif [ "\$1" = "ct" ]
 then
     echo "route b"
     node main.js b
+
+elif [ "\$1" = "i" ]
+then
+    # echo "route reconstruct" 
+    mkdir data data/analyzed data/analyzed/words data/analyzed/sentences data/processed data/rawText
+    touch test.js
 else
     echo "Please indicate a valid route."
 fi
 EOT
 
 npm init -y
-rm package.json
-touch package.json
+# rm package.json
+# touch package.json
 
-cat <<EOT >> package.json
-{
-  "name": "$name",
-  "version": "1.0.0",
-  "description": "$description",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Alex Taylor",
-  "license": "ISC"
-}
-EOT
+# cat <<EOT >> package.json
+# {
+#   "name": "$name",
+#   "version": "1.0.0",
+#   "description": "$description",
+#   "main": "main.js",
+#   "scripts": {
+#     "test": "echo \"Error: no test specified\" && exit 1"
+#   },
+#   "keywords": [],
+#   "author": "Alex Taylor",
+#   "license": "ISC"
+# }
+# EOT
 
 cat <<EOT >> LICENSE
 MIT License
